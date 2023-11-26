@@ -1,0 +1,13 @@
+.dart_tool
+.idea
+.pub
+.vscode
+logs/
+test/
+build/
+.analysis-options
+.packages
+*.g.dart
+
+android/
+ios/
