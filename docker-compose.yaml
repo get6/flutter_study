@@ -7,7 +7,6 @@ services:
     volumes:
       - .:/app
       # - flutter-sdk:/home/ittae/flutter
-      # - flutter-sdk:/app/ios
 
 # volumes:
 #   flutter-sdk:
@@ -16,7 +15,4 @@ services:
 #     driver_opts:
 #       type: none
 #       o: bind
-#       device: /goinfre/sunhwang/flutter
-      # device: ${HOME}/goinfre/flutter
-      # device: ${HOME}/data/flutter
-      # device: ${HOME}/data
+#       device: ${HOME}/goinfre/flutter
