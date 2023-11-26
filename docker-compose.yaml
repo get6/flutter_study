@@ -6,3 +6,17 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
+      # - flutter-sdk:/home/ittae/flutter
+      # - flutter-sdk:/app/ios
+
+# volumes:
+#   flutter-sdk:
+#     name: flutter-sdk
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /goinfre/sunhwang/flutter
+      # device: ${HOME}/goinfre/flutter
+      # device: ${HOME}/data/flutter
+      # device: ${HOME}/data
