@@ -39,116 +39,112 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.red,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: FittedBox(
-                    child: SizedBox(
-                      width: 250,
-                      height: 250,
-                      child: Container(
-                        color: Colors.grey.shade400,
-                        width: 250,
-                        height: 250,
-                      ),
-                    ),
+      body: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: FittedContainer(
+                  right: true,
+                  bottom: true,
+                  child: Container(color: Colors.grey.shade400),
+                ),
+              ),
+              Expanded(
+                child: FittedContainer(
+                  bottom: true,
+                  child: FractionallySizedBox(
+                    alignment: Alignment.topCenter,
+                    heightFactor: 0.5,
+                    child: Container(color: Colors.blue),
                   ),
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.black)),
-                  ),
-                  child: Expanded(
-                    child: FittedBox(
-                      child: Container(
-                        width: 250,
-                        height: 125,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Expanded(
-                //   child: SizedBox(
-                //     width: 250,
-                //     height: 250,
-                //     child: Column(
-                //       children: [
-                //         Container(
-                //           color: Colors.white,
-                //           width: 250,
-                //           height: 100,
-                //         ),
-                //         Container(
-                //           color: Colors.green,
-                //           width: 250,
-                //           height: 100,
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                Expanded(
-                  child: FittedBox(
-                    child: SizedBox(
-                      width: 250,
-                      height: 250,
-                      child: Column(
-                        children: [
-                          // Container(
-                          //   color: Colors.yellow,
-                          //   width: 250,
-                          //   height: 100,
-                          // ),
-                          Container(
-                            color: Colors.black,
-                            width: 250,
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
+              ),
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: FittedContainer(
+                  right: true,
+                  child: FractionallySizedBox(
+                    alignment: Alignment.bottomCenter,
+                    heightFactor: 0.3,
+                    child: Container(color: Colors.green),
                   ),
                 ),
-                SizedBox(
-                  width: 250,
+              ),
+              Expanded(
+                child: FittedContainer(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.yellowAccent,
-                      width: 250,
-                      height: 100,
+                    padding: const EdgeInsets.all(16),
+                    child: FractionallySizedBox(
+                      alignment: Alignment.topCenter,
+                      heightFactor: 0.4,
+                      child: Container(color: Colors.yellowAccent),
                     ),
                   ),
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child:
-                      Container(color: Colors.yellow, width: 500, height: 100),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(color: Colors.brown, width: 500, height: 50),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(color: Colors.yellow, width: 500, height: 100),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(color: Colors.brown, width: 500, height: 50),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FittedContainer extends StatelessWidget {
+  const FittedContainer({
+    super.key,
+    this.left = false,
+    this.right = false,
+    this.top = false,
+    this.bottom = false,
+    required this.child,
+  });
+  final bool left;
+  final bool right;
+  final bool top;
+  final bool bottom;
+  final Widget child;
+
+  final BorderSide myBorderSide = const BorderSide(
+    color: Colors.black,
+    width: 5,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: top ? myBorderSide : BorderSide.none,
+            right: right ? myBorderSide : BorderSide.none,
+            bottom: bottom ? myBorderSide : BorderSide.none,
+            left: left ? myBorderSide : BorderSide.none,
+          ),
         ),
+        width: 250,
+        height: 250,
+        child: child,
       ),
     );
   }
